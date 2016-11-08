@@ -8,15 +8,9 @@ def insert(table, key):
 
 def get(table, key):
     if table:
-        if not table[hashFunction(key, len(table))]:
-        	return None
-        elif len(table[hashFunction(key, len(table))]) == 1:
-        	return table[key[0]]
-        else:
-        	for value in table[hashFunction(key, len(table))]:
-        		if value == key:
-        			return key
-        	return None
+        if any(value == key for value in table[hashFunction(key, len(table))]):
+        	return key
+        else: return None
     else: return None
 
 
